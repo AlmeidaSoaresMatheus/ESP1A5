@@ -5,7 +5,7 @@ O estudo da saúde de natalidade é essencial para entender e melhorar as condi�
 
 Neste projeto, nosso objetivo foi analisar esse conjunto de dados abrangente. A análise focou nas seguintes áreas principais:
 
-Estatística Descritiva: Utilizamos a estatística descritiva para explorar as distribuições de variáveis-chave, como o peso dos recém-nascidos por sexo e a idade das mães por estado civil. Essas análises fornecem uma visão inicial das características básicas dos dados, ajudando a identificar tendências e padrões relevantes.
+´Estatística Descritiva:´ Utilizamos a estatística descritiva para explorar as distribuições de variáveis-chave, como o peso dos recém-nascidos por sexo e a idade das mães por estado civil. Essas análises fornecem uma visão inicial das características básicas dos dados, ajudando a identificar tendências e padrões relevantes.
 
 Probabilidade: Avaliamos a probabilidade de eventos importantes, como o baixo peso ao nascer e a ocorrência de anomalias congênitas, considerando diferentes fatores como o tipo de parto e a idade da mãe. A análise probabilística oferece uma compreensão mais profunda dos riscos associados a diferentes condições.
 
