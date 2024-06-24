@@ -72,13 +72,20 @@ anomalia_prob
 ## 3. Inferência
 
 # Pergunta 5: Existe diferença significativa entre o número médio de consultas pré-natais realizadas por mães de diferentes grupos etários?
-DNOPEN22$GRUPO_ETARIO <- cut(as.numeric(DNOPEN22$IDADEMAE), breaks=c(0, 19, 29, 39, 49), labels=c("0-19", "20-29", "30-39", "40-49"))
+# Criando a variável de grupo etário
+DNOPEN22$GRUPO_ETARIO <- cut(as.numeric(DNOPEN22$IDADEMAE), 
+                             breaks=c(0, 19, 29, 39, 49), 
+                             labels=c("0-19", "20-29", "30-39", "40-49"))
 
+# Removendo valores NA nas colunas IDADEMAE e CONSULTAS
 DNOPEN22 <- DNOPEN22[!is.na(DNOPEN22$IDADEMAE) & !is.na(DNOPEN22$CONSULTAS), ]
 
+# Realizando a ANOVA
 anova_result <- aov(as.numeric(CONSULTAS) ~ GRUPO_ETARIO, data=DNOPEN22)
 summary(anova_result)
 
+# Visualizando os resultados com um boxplot
+library(ggplot2)
 ggplot(DNOPEN22, aes(x=GRUPO_ETARIO, y=as.numeric(CONSULTAS))) +
   geom_boxplot() +
   xlab("Grupo Etário") +
@@ -88,15 +95,22 @@ ggplot(DNOPEN22, aes(x=GRUPO_ETARIO, y=as.numeric(CONSULTAS))) +
 
 
 # Pergunta 6: Existe diferença significativa no peso dos recém-nascidos entre diferentes faixas de idade gestacional?
-DNOPEN22$GRUPO_GESTACIONAL <- cut(as.numeric(DNOPEN22$SEMAGESTAC), breaks=c(0, 27, 37, 42), labels=c("Pré-termo", "Termo", "Pós-termo"))
+# Criando a variável de grupo gestacional
+DNOPEN22$GRUPO_GESTACIONAL <- cut(as.numeric(DNOPEN22$SEMAGESTAC), 
+                                  breaks=c(0, 27, 37, 42), 
+                                  labels=c("Pré-termo", "Termo", "Pós-termo"))
 
+# Removendo valores NA nas colunas PESO e SEMAGESTAC
 DNOPEN22 <- DNOPEN22[!is.na(DNOPEN22$PESO) & !is.na(DNOPEN22$SEMAGESTAC), ]
 
+# Realizando a ANOVA
 anova_result <- aov(as.numeric(PESO) ~ GRUPO_GESTACIONAL, data=DNOPEN22)
 summary(anova_result)
 
+# Visualizando os resultados com um boxplot
+library(ggplot2)
 ggplot(DNOPEN22, aes(x=GRUPO_GESTACIONAL, y=as.numeric(PESO))) +
   geom_boxplot() +
-  xlab("Grupo Gestacional (Pré-termo, Termo, Pós-termo)") +
+  xlab("Grupo Gestacional") +
   ylab("Peso (g)") +
   ggtitle("Boxplot do Peso dos Recém-nascidos por Grupo Gestacional")
